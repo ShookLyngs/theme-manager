@@ -1,0 +1,37 @@
+{
+  "name": "theme-manager",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/theme-manager.umd.js",
+  "module": "./dist/theme-manager.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/theme-manager.es.js",
+      "require": "./dist/theme-manager.umd.js"
+    }
+  },
+  "description": "Manage ThemeData in Vue/React/Tailwind, support hook/composition-api.",
+  "version": "0.1.0",
+  "author": "shook-lyngs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShookLyngs/theme-manager.git"
+  },
+  "scripts": {
+    "demo/vue": "vite serve demo/vue",
+    "demo/react": "vite serve demo/react",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^1.1.2",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.0.1"
+  }
+}
