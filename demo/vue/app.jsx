@@ -1,16 +1,16 @@
 import { defineComponent, ref } from 'vue';
-import { useAdd } from '../../lib';
+import { useVueThemeManager } from '../../lib';
 
 export default defineComponent(() => {
-  const {
-    result: count,
-    add: increase,
-  } = useAdd(0);
+  const { theme, setTheme } = useVueThemeManager();
+  function toggleTheme() {
+    setTheme(theme.value.name === 'light' ? 'dark' : 'light');
+  }
 
   return () => (
     <div>
-      <div>{count.value}</div>
-      <button onClick={() => increase(1)}>Increase</button>
+      <div>{theme.value.name}</div>
+      <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );
 });
