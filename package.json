@@ -12,7 +12,7 @@
     }
   },
   "description": "Manage ThemeData in Vue/React/Tailwind, support hook/composition-api.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
