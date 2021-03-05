@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "sourceMap": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "jsx": "preserve",
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "outDir": "types",
+    "declaration": true,
+    "types": [
+      "vite/client",
+    ]
+  },
+  "include": [
+    "lib/**/*.ts"
+  ]
+}

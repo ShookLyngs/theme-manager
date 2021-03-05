@@ -1,4 +1,4 @@
-import { createTheme } from '../../lib';
+import { createTheme } from '../../lib-backup';
 
 export default createTheme({
   name: 'dark',

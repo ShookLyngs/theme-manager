@@ -1,4 +1,4 @@
-import { createVueThemeManager } from '../../lib';
+import { createVueThemeManager } from '../../lib-backup';
 import light from './light';
 import dark from './dark';
 

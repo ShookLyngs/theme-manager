@@ -1,24 +1,25 @@
-import { createThemeManager } from './generate';
-import { inject, ref } from 'vue';
+import { createThemeManager as createThemeManagerOriginal, ThemeManagerOptions } from '../theme-manager';
+import { App, inject, ref } from 'vue';
 
 const themeManagerKey = 'themeManager';
 
-export function useVueThemeManager() {
+export function useThemeManager() {
   return inject(themeManagerKey);
 }
 
-export function createVueThemeManager(options) {
-  const manager = createThemeManager(options);
+export function createThemeManager(options: ThemeManagerOptions) {
+  const manager = createThemeManagerOriginal(options);
 
   // Convert to observable
   manager.theme = ref(manager.theme.value);
+
   // Wrap `setTheme()`, prevent loss of pointer
   const setTheme = manager.setTheme;
   manager.setTheme = theme => setTheme.call(manager, theme);
 
   return {
     manager,
-    install(app) {
+    install(app: App) {
       app.provide(themeManagerKey, manager);
       app.config.globalProperties.$themeManager = manager;
     }
