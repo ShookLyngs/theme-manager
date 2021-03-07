@@ -1,23 +1,28 @@
 {
-  "name": "@lyngs/theme-manager",
+  "name": "@lyngs/themer",
   "files": [
     "dist"
   ],
-  "main": "./dist/theme-manager.umd.js",
-  "module": "./dist/theme-manager.es.js",
+  "types": "./types/index.d.ts",
+  "main": "./lib/themer/dist/themer.umd.js",
+  "module": "./lib/themer/dist/themer.es.js",
   "exports": {
     ".": {
-      "import": "./dist/theme-manager.es.js",
-      "require": "./dist/theme-manager.umd.js"
+      "import": "./lib/themer/dist/themer.es.js",
+      "require": "./lib/themer/dist/themer.umd.js"
+    },
+    "./vue": {
+      "import": "./lib/themer-vue/dist/themer-vue.es.js",
+      "require": "./lib/themer-vue/dist/themer-vue.umd.js"
     }
   },
-  "description": "Manage ThemeData in Vue/React/Tailwind, support hook/composition-api.",
+  "description": "JavaScript CSS Theme Manager. Support Tailwind CSS.",
   "version": "0.2.0",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShookLyngs/theme-manager.git"
+    "url": "git+https://github.com/ShookLyngs/themer.git"
   },
   "publishConfig": {
     "access": "public",
@@ -26,7 +31,7 @@
   "scripts": {
     "demo/vue": "vite serve demo/vue",
     "demo/react": "vite serve demo/react",
-    "build": "vite build",
+    "build": "vite build lib/themer && vite build lib/themer-vue && tsc --emitDeclarationOnly",
     "serve": "vite preview"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { createTheme, createThemeManager } from '../../lib';
+import { createTheme, createThemeManager } from '../../lib/themer/src';
 
 export default defineComponent(() => {
   const light = createTheme(() => ({

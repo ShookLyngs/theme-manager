@@ -1,10 +1,9 @@
-import { createThemeManager as createThemeManagerOriginal, ThemeManagerOptions } from '../theme-manager';
+import { ThemeManager, createThemeManager as createThemeManagerOriginal, ThemeManagerOptions } from '../../themer/src/theme-manager';
 import { App, inject, ref } from 'vue';
 
 const themeManagerKey = 'themeManager';
-
 export function useThemeManager() {
-  return inject(themeManagerKey);
+  return inject<ThemeManager>(themeManagerKey);
 }
 
 export function createThemeManager(options: ThemeManagerOptions) {

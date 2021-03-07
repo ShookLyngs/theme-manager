@@ -17,6 +17,7 @@
     ]
   },
   "include": [
-    "lib/**/*.ts"
+    "lib/themer/src/**/*.ts",
+    "lib/themer-vue/src/**/*.ts"
   ]
 }
