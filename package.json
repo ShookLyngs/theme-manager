@@ -18,8 +18,8 @@
       "require": "./lib/themer-vue/dist/themer-vue.umd.js"
     }
   },
-  "description": "JavaScript CSS Theme Manager. Support Tailwind CSS.",
-  "version": "0.2.2",
+  "description": "CSS Variable Manager in JavaScript. Support TailwindCSS.",
+  "version": "0.2.3",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
