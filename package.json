@@ -1,7 +1,9 @@
 {
   "name": "@lyngs/themer",
   "files": [
-    "lib"
+    "lib",
+    "types",
+    "tsconfig.json"
   ],
   "types": "./types/index.d.ts",
   "main": "./lib/themer/dist/themer.umd.js",
@@ -17,7 +19,7 @@
     }
   },
   "description": "JavaScript CSS Theme Manager. Support Tailwind CSS.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
