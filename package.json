@@ -17,7 +17,7 @@
     }
   },
   "description": "JavaScript CSS Theme Manager. Support Tailwind CSS.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
