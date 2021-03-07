@@ -5,21 +5,14 @@
     "types",
     "tsconfig.json"
   ],
-  "types": "./types/index.d.ts",
   "main": "./lib/themer/dist/themer.umd.js",
   "module": "./lib/themer/dist/themer.es.js",
   "exports": {
-    "themer": {
-      "import": "./lib/themer/dist/themer.es.js",
-      "require": "./lib/themer/dist/themer.umd.js"
-    },
-    "themer/vue": {
-      "import": "./lib/themer-vue/dist/themer-vue.es.js",
-      "require": "./lib/themer-vue/dist/themer-vue.umd.js"
-    }
+    ".": "./lib/themer/",
+    "./vue": "./lib/themer-vue/"
   },
   "description": "CSS Variable Manager in JavaScript. Support TailwindCSS.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
@@ -33,7 +26,7 @@
   "scripts": {
     "demo/vue": "vite serve demo/vue",
     "demo/react": "vite serve demo/react",
-    "build": "vite build lib/themer && vite build lib/themer-vue && tsc --emitDeclarationOnly",
+    "build": "vite build lib/themer && vite build lib/themer-vue && tsc -p lib/themer/tsconfig.json --emitDeclarationOnly && tsc -p lib/themer-vue/tsconfig.json --emitDeclarationOnly",
     "serve": "vite preview"
   },
   "dependencies": {

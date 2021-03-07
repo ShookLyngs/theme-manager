@@ -1,0 +1,17 @@
+{
+  "name": "@lyngs/themer",
+  "files": [
+    "src",
+    "dist",
+    "types"
+  ],
+  "main": "./dist/themer.umd.js",
+  "module": "./dist/themer.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/themer.es.js",
+      "require": "./dist/themer.umd.js"
+    }
+  },
+  "types": "./types/index.d.ts"
+}

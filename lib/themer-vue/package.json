@@ -1,0 +1,17 @@
+{
+  "name": "@lyngs/themer-vue",
+  "files": [
+    "src",
+    "dist",
+    "types"
+  ],
+  "main": "./dist/themer-vue.umd.js",
+  "module": "./dist/themer-vue.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/themer-vue.es.js",
+      "require": "./dist/themer-vue.umd.js"
+    }
+  },
+  "types": "./types/index.d.ts"
+}
