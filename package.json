@@ -1,7 +1,7 @@
 {
   "name": "@lyngs/themer",
   "files": [
-    "dist"
+    "lib"
   ],
   "types": "./types/index.d.ts",
   "main": "./lib/themer/dist/themer.umd.js",
