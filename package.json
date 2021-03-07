@@ -9,17 +9,17 @@
   "main": "./lib/themer/dist/themer.umd.js",
   "module": "./lib/themer/dist/themer.es.js",
   "exports": {
-    ".": {
+    "themer": {
       "import": "./lib/themer/dist/themer.es.js",
       "require": "./lib/themer/dist/themer.umd.js"
     },
-    "./vue": {
+    "themer/vue": {
       "import": "./lib/themer-vue/dist/themer-vue.es.js",
       "require": "./lib/themer-vue/dist/themer-vue.umd.js"
     }
   },
   "description": "CSS Variable Manager in JavaScript. Support TailwindCSS.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
