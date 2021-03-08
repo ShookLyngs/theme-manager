@@ -12,14 +12,11 @@
     "url": "git+https://github.com/ShookLyngs/themer.git"
   },
   "public": false,
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
     "demo/vue": "vite serve demo/vue",
     "demo/react": "vite serve demo/react",
     "build": "npm run build --prefix lib/themer && npm run build --prefix lib/themer-vue",
+    "release": "npm run release --prefix lib/themer && npm run release --prefix lib/themer-vue",
     "serve": "vite preview"
   },
   "dependencies": {
