@@ -1,8 +1,8 @@
-import { createVueThemeManager } from '../../lib-backup';
+import { createThemeManager } from '@lyngs/themer-vue';
 import light from './light';
 import dark from './dark';
 
-const { manager, install } = createVueThemeManager([
+const { manager, install } = createThemeManager([
   light,
   dark,
 ]);

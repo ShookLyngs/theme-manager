@@ -1,5 +1,6 @@
 {
   "name": "@lyngs/themer",
+  "version": "0.3.0",
   "files": [
     "src",
     "dist",
@@ -13,5 +14,19 @@
       "require": "./dist/themer.umd.js"
     }
   },
-  "types": "./types/index.d.ts"
+  "types": "./types/index.d.ts",
+  "author": "shook-lyngs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShookLyngs/themer.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "release": "npm run build && npm publish"
+  }
 }

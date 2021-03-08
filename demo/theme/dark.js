@@ -1,4 +1,4 @@
-import { createTheme } from '../../lib-backup';
+import { createTheme } from '@lyngs/themer-vue';
 
 export default createTheme({
   name: 'dark',

@@ -1,4 +1,4 @@
-import { ThemeManager, createThemeManager as createThemeManagerOriginal, ThemeManagerOptions } from '../../themer/src/theme-manager';
+import { ThemeManager, createThemeManager as createThemeManagerOriginal, ThemeManagerOptions } from '@lyngs/themer';
 import { App, inject, ref } from 'vue';
 
 const themeManagerKey = 'themeManager';
