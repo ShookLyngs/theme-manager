@@ -1,11 +1,10 @@
 {
   "name": "@lyngs/themer",
-  "main": "index.js",
   "workspaces": [
-    "lib/themer/**"
+    "lib/*"
   ],
   "description": "CSS Variable Manager in JavaScript. Support TailwindCSS.",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {

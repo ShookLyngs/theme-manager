@@ -13,5 +13,5 @@
       "require": "./dist/themer-vue.umd.js"
     }
   },
-  "types": "./types/index.d.ts"
+  "types": "./types/theme-vue/src/index.d.ts"
 }
