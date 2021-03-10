@@ -1,12 +1,16 @@
-import { Theme, createUsefulThemeVariables } from './theme';
+import { createUsefulThemeVariables, Theme } from './theme';
 import { setDocumentVariables } from './variable';
 import { isObject } from './util';
+import { cloneDeep } from 'lodash';
 
 export interface ThemeManager extends ThemeManagerData {
+  themeValueUpdater?: (theme: Theme) => void;
   setTheme: (theme: string | Theme) => boolean;
 }
 export interface ThemeManagerData extends ThemeManagerObjectOptions {
   theme: Theme;
+  themeValueUpdater?: (theme: Theme) => void;
+  setTheme?: (theme: string | Theme) => boolean;
 }
 export interface ThemeManagerObjectOptions {
   element?: HTMLElement;
@@ -16,10 +20,9 @@ export type ThemeManagerOptions = ThemeManagerObjectOptions | Theme[];
 
 export function createThemeManager(options: ThemeManagerOptions): ThemeManager {
   const managerData = createThemeManagerData(options);
-  return {
-    ...managerData,
-    setTheme: (theme) => setTheme(managerData, theme),
-  };
+  managerData.setTheme = (theme) => setTheme(managerData, theme);
+
+  return <ThemeManager>managerData;
 }
 
 function createThemeManagerData(options: ThemeManagerOptions): ThemeManagerData {
@@ -66,12 +69,15 @@ export function createDefaultElement(): HTMLElement | undefined {
 }
 
 export function setTheme(managerData: ThemeManagerData, theme: string | Theme): boolean {
+  console.log('setTheme: ', managerData, theme);
   if (typeof theme === 'string') {
     const target = managerData.themes.find(row => row.value.name === theme);
     if (!target) return false;
 
     theme = target;
   }
+
+  theme = <Theme>cloneDeep(theme);
 
   // Filter variables from ThemeData
   // Only part of data in Theme will be write in Document
@@ -81,6 +87,11 @@ export function setTheme(managerData: ThemeManagerData, theme: string | Theme): 
   if (!managerData.element) return false;
   setDocumentVariables(managerData.element, variables);
 
-  managerData.theme.value = theme.value;
+  if (managerData.themeValueUpdater instanceof Function) {
+    managerData.themeValueUpdater(theme);
+  } else {
+    managerData.theme.value = theme.value;
+  }
+
   return true;
 }

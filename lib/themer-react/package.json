@@ -1,17 +1,17 @@
 {
-  "name": "@lyngs/themer",
+  "name": "@lyngs/themer-react",
   "version": "0.3.7",
   "files": [
     "src",
     "dist",
     "types"
   ],
-  "main": "./dist/themer.umd.js",
-  "module": "./dist/themer.es.js",
+  "main": "./dist/themer-react.umd.js",
+  "module": "./dist/themer-react.es.js",
   "exports": {
     ".": {
-      "import": "./dist/themer.es.js",
-      "require": "./dist/themer.umd.js"
+      "import": "./dist/themer-react.es.js",
+      "require": "./dist/themer-react.umd.js"
     }
   },
   "types": "./types/index.d.ts",
@@ -30,9 +30,7 @@
     "release": "npm run build && npm publish"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.168"
+    "react": "^17.0.0",
+    "@lyngs/themer": "^0.3.0"
   }
 }

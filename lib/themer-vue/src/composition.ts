@@ -9,12 +9,8 @@ export function useThemeManager() {
 export function createThemeManager(options: ThemeManagerOptions) {
   const manager = createThemeManagerOriginal(options);
 
-  // Convert to observable
+  // Convert to observable value
   manager.theme = ref(manager.theme.value);
-
-  // Wrap `setTheme()`, prevent loss of pointer
-  const setTheme = manager.setTheme;
-  manager.setTheme = theme => setTheme.call(manager, theme);
 
   return {
     manager,
