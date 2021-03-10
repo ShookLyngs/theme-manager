@@ -4,6 +4,7 @@ import {
 } from '@lyngs/themer';
 
 import { useState, useEffect } from 'react';
+import { cloneDeep } from 'lodash';
 
 interface ThemeManagerStore {
   origin: ThemeManager;
@@ -23,13 +24,13 @@ export function useThemeManager(key: string): ThemeManager {
     ? <ThemeManager>item.instance
     : item.origin;
 
-  const [ state, setState ] = useState(manager.theme.value);
+  const [ state, setState ] = useState(cloneDeep(manager.theme));
 
-  manager.theme.value = state;
-  manager.themeValueUpdater = (theme) => setState(theme.value);
+  manager.theme = state;
+  manager.themeValueUpdater = (theme) => setState(cloneDeep(theme));
 
   useEffect(() => {
-    console.log('state updated: ', state);
+    console.log('state updated: ', state, manager);
   });
 
   item.instance = manager;
@@ -43,7 +44,7 @@ export function createThemeManager(options: ThemeManagerOptions) {
     origin: createThemeManagerOriginal(options),
   });
 
-  console.log('Created ThemeManager: ', store.get(key));
+  console.log('created ThemeManager: ', store.get(key));
 
   return key;
 }
