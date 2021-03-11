@@ -69,7 +69,6 @@ export function createDefaultElement(): HTMLElement | undefined {
 }
 
 export function setTheme(managerData: ThemeManagerData, theme: string | Theme): boolean {
-  console.log('setTheme: ', managerData, theme);
   if (typeof theme === 'string') {
     const target = managerData.themes.find(row => row.value.name === theme);
     if (!target) return false;

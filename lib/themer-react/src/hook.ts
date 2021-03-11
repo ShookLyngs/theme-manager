@@ -3,48 +3,47 @@ import {
   createThemeManager as createThemeManagerOriginal,
 } from '@lyngs/themer';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { cloneDeep } from 'lodash';
 
 interface ThemeManagerStore {
+  options: ThemeManagerOptions;
   origin: ThemeManager;
   instance?: ThemeManager;
 }
 
-const store = new Map<string, ThemeManagerStore>();
+const store = new Map<symbol, ThemeManagerStore>();
 
-export function useThemeManager(key: string): ThemeManager {
+function createThemeMangerStore(options: ThemeManagerOptions) {
+  const key = Symbol();
+
+  store.set(key, {
+    options,
+    origin: createThemeManagerOriginal(options)
+  });
+
+  return key;
+}
+
+export function useThemeManager(key: symbol): ThemeManager {
   const item = store.get(key);
+  if (!item) throw new Error(`ThemeManager instance not exist`);
 
-  if (!item) {
-    throw new Error(`You need to create ThemeManager before calling it.`);
-  }
-
-  const manager = Reflect.has(item, 'instance')
-    ? <ThemeManager>item.instance
-    : item.origin;
-
+  const manager = 'instance' in item ? <ThemeManager>item.instance : item.origin;
   const [ state, setState ] = useState(cloneDeep(manager.theme));
 
   manager.theme = state;
   manager.themeValueUpdater = (theme) => setState(cloneDeep(theme));
-
-  useEffect(() => {
-    console.log('state updated: ', state, manager);
-  });
 
   item.instance = manager;
   return manager;
 }
 
 export function createThemeManager(options: ThemeManagerOptions) {
-  const key = `${Date.now()}`;
+  const key = createThemeMangerStore(options);
 
-  store.set(key, {
-    origin: createThemeManagerOriginal(options),
-  });
-
-  console.log('created ThemeManager: ', store.get(key));
-
-  return key;
+  return {
+    key,
+    useThemeManager: () => useThemeManager(key),
+  };
 }
