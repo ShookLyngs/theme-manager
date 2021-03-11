@@ -16,13 +16,17 @@ const store = new Map<symbol, ThemeManagerStore>();
 
 function createThemeMangerStore(options: ThemeManagerOptions) {
   const key = Symbol();
-
-  store.set(key, {
+  const storeItem = {
     options,
     origin: createThemeManagerOriginal(options)
-  });
+  };
 
-  return key;
+  store.set(key, storeItem);
+
+  return {
+    key,
+    storeItem,
+  };
 }
 
 export function useThemeManager(key: symbol): ThemeManager {
@@ -40,10 +44,11 @@ export function useThemeManager(key: symbol): ThemeManager {
 }
 
 export function createThemeManager(options: ThemeManagerOptions) {
-  const key = createThemeMangerStore(options);
+  const { key, storeItem } = createThemeMangerStore(options);
 
   return {
     key,
+    origin: storeItem.origin,
     useThemeManager: () => useThemeManager(key),
   };
 }

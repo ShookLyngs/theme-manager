@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import reactRefresh from '@vitejs/plugin-react-refresh';
 
-// Path
-import { join } from 'path';
-const resolve = (...paths) => join(__dirname, ...paths);
+import postcss from './postcss.config';
 
 export default defineConfig({
+  css: {
+    postcss,
+  },
   plugins: [
     reactRefresh()
   ]
