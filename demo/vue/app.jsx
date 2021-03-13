@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue';
-import { useThemeManager } from '@lyngs/themer-vue';
+import { useThemer } from '@lyngs/themer-vue';
 
 export default defineComponent(() => {
-  const { theme, setTheme } = useThemeManager();
+  const { theme, setTheme } = useThemer();
   function toggleTheme() {
     setTheme(theme.value.name === 'light' ? 'dark' : 'light');
     console.log(theme);

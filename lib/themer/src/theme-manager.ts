@@ -3,29 +3,29 @@ import { setDocumentVariables } from './variable';
 import { isObject } from './util';
 import { cloneDeep } from 'lodash';
 
-export interface ThemeManager extends ThemeManagerData {
+export interface Themer extends ThemerData {
   themeValueUpdater?: (theme: Theme) => void;
   setTheme: (theme: string | Theme) => boolean;
 }
-export interface ThemeManagerData extends ThemeManagerObjectOptions {
+export interface ThemerData extends ThemerObjectOptions {
   theme: Theme;
   themeValueUpdater?: (theme: Theme) => void;
   setTheme?: (theme: string | Theme) => boolean;
 }
-export interface ThemeManagerObjectOptions {
+export interface ThemerObjectOptions {
   element?: HTMLElement;
   themes: Theme[];
 }
-export type ThemeManagerOptions = ThemeManagerObjectOptions | Theme[];
+export type ThemerOptions = ThemerObjectOptions | Theme[];
 
-export function createThemeManager(options: ThemeManagerOptions): ThemeManager {
-  const managerData = createThemeManagerData(options);
+export function createThemer(options: ThemerOptions): Themer {
+  const managerData = createThemerData(options);
   managerData.setTheme = (theme) => setTheme(managerData, theme);
 
-  return <ThemeManager>managerData;
+  return <Themer>managerData;
 }
 
-function createThemeManagerData(options: ThemeManagerOptions): ThemeManagerData {
+function createThemerData(options: ThemerOptions): ThemerData {
   let element = createDefaultElement();
   let themes: Theme[] = [];
   let theme: Theme;
@@ -68,7 +68,7 @@ export function createDefaultElement(): HTMLElement | undefined {
   }
 }
 
-export function setTheme(managerData: ThemeManagerData, theme: string | Theme): boolean {
+export function setTheme(managerData: ThemerData, theme: string | Theme): boolean {
   if (typeof theme === 'string') {
     const target = managerData.themes.find(row => row.value.name === theme);
     if (!target) return false;

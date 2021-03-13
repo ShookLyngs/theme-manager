@@ -1,11 +1,20 @@
 import React from 'react';
-      import { useThemeManager } from './theme';
+import { useThemer } from './theme';
 
-      export default function() {
-      const { theme, setTheme } = useThemeManager();
-      function toggleTheme() {
-      setTheme(theme.value.name === 'light' ? 'dark' : 'light')
+export default function() {
+  const { theme, setTheme } = useThemer();
+  function toggleTheme() {
+    setTheme(theme.value.name === 'light' ? 'dark' : 'light')
   }
+
+  const code = "import { createThemer } from '@lyngs/themer-react';\n" +
+    "import light from './light';\n" +
+    "import dark from './dark';\n" +
+    "\n" +
+    "export const { origin, useThemer } = createThemer([\n" +
+    "  light,\n" +
+    "  dark,\n" +
+    "]);";
 
   return (
     <div className="transition bg-positive-100 h-full flex flex-col items-center justify-center">
@@ -15,8 +24,8 @@ import React from 'react';
             <h1 className="transition text-positive-900">
               Themer
             </h1>
-            <h2 className="ml-4 mt-2 px-3 py-0.5 rounded transition text-sm bg-positive-200 text-positive-500">
-              Modern Web Theme Manager in JavaScript.
+            <h2 className="ml-4 transition text-base text-positive-700">
+              Modern Theme Variable Manager
             </h2>
           </div>
 
@@ -25,12 +34,13 @@ import React from 'react';
             onClick={toggleTheme}
           >Toggle</button>
         </div>
-        <div className="ml-14 text-positive-800">
+        <div className="transition ml-14 text-positive-800 text-sm">
           <h2 className="text-2xl mb-3">Installation</h2>
-          <code className="bg-positive-200 p-3">
-            const name = 1;
-            call();
-          </code>
+          <pre className="transition bg-positive-200 p-4 mb-6 rounded text-sm select-all">
+            npm i -s @lyngs/themer-react
+          </pre>
+          <h2 className="text-2xl mb-3">Create Themer</h2>
+          <pre className="transition bg-positive-200 p-4 mb-6 rounded text-sm">{code}</pre>
         </div>
       </div>
     </div>

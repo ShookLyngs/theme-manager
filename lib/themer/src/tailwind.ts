@@ -1,4 +1,4 @@
-import { ThemeManager } from './theme-manager';
+import { Themer } from './theme-manager';
 import { ThemeDataShape, getThemeDataShape } from './theme';
 import { createVarContent } from './variable';
 
@@ -8,8 +8,8 @@ interface TailwindThemeData {
   }
 }
 
-export function createTailwindPreset(themeManager: ThemeManager) {
-  const shape = getThemeDataShape(themeManager.themes)
+export function createTailwindPreset(Themer: Themer) {
+  const shape = getThemeDataShape(Themer.themes)
 
   return {
     theme: {

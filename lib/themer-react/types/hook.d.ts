@@ -1,7 +1,7 @@
-import { ThemeManager, ThemeManagerOptions } from '@lyngs/themer';
-export declare function useThemeManager(key: symbol): ThemeManager;
-export declare function createThemeManager(options: ThemeManagerOptions): {
+import { Themer, ThemerOptions } from '@lyngs/themer';
+export declare function useThemer(key: symbol): Themer;
+export declare function createThemer(options: ThemerOptions): {
     key: symbol;
-    origin: ThemeManager;
-    useThemeManager: () => ThemeManager;
+    origin: Themer;
+    useThemer: () => Themer;
 };

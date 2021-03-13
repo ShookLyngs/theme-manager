@@ -1,18 +1,18 @@
 import { Theme } from './theme';
-export interface ThemeManager extends ThemeManagerData {
+export interface Themer extends ThemerData {
     themeValueUpdater?: (theme: Theme) => void;
     setTheme: (theme: string | Theme) => boolean;
 }
-export interface ThemeManagerData extends ThemeManagerObjectOptions {
+export interface ThemerData extends ThemerObjectOptions {
     theme: Theme;
     themeValueUpdater?: (theme: Theme) => void;
     setTheme?: (theme: string | Theme) => boolean;
 }
-export interface ThemeManagerObjectOptions {
+export interface ThemerObjectOptions {
     element?: HTMLElement;
     themes: Theme[];
 }
-export declare type ThemeManagerOptions = ThemeManagerObjectOptions | Theme[];
-export declare function createThemeManager(options: ThemeManagerOptions): ThemeManager;
+export declare type ThemerOptions = ThemerObjectOptions | Theme[];
+export declare function createThemer(options: ThemerOptions): Themer;
 export declare function createDefaultElement(): HTMLElement | undefined;
-export declare function setTheme(managerData: ThemeManagerData, theme: string | Theme): boolean;
+export declare function setTheme(managerData: ThemerData, theme: string | Theme): boolean;

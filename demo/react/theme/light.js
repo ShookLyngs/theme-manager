@@ -14,7 +14,7 @@ export default createTheme({
         800: '#393939',
         700: '#585858',
         500: '#959595',
-        200: '#dbdbdb',
+        200: '#eeeeee',
         100: '#ffffff',
       },
     },

@@ -1,24 +1,24 @@
 import {
-  ThemeManager, ThemeManagerOptions,
-  createThemeManager as createThemeManagerOriginal,
+  Themer, ThemerOptions,
+  createThemer as createThemerOriginal,
 } from '@lyngs/themer';
 
 import { useState } from 'react';
 import { cloneDeep } from 'lodash';
 
-interface ThemeManagerStore {
-  options: ThemeManagerOptions;
-  origin: ThemeManager;
-  instance?: ThemeManager;
+interface ThemerStore {
+  options: ThemerOptions;
+  origin: Themer;
+  instance?: Themer;
 }
 
-const store = new Map<symbol, ThemeManagerStore>();
+const store = new Map<symbol, ThemerStore>();
 
-function createThemeMangerStore(options: ThemeManagerOptions) {
+function createThemeMangerStore(options: ThemerOptions) {
   const key = Symbol();
   const storeItem = {
     options,
-    origin: createThemeManagerOriginal(options)
+    origin: createThemerOriginal(options)
   };
 
   store.set(key, storeItem);
@@ -29,11 +29,11 @@ function createThemeMangerStore(options: ThemeManagerOptions) {
   };
 }
 
-export function useThemeManager(key: symbol): ThemeManager {
+export function useThemer(key: symbol): Themer {
   const item = store.get(key);
-  if (!item) throw new Error(`ThemeManager instance not exist`);
+  if (!item) throw new Error(`Themer instance not exist`);
 
-  const manager = 'instance' in item ? <ThemeManager>item.instance : item.origin;
+  const manager = 'instance' in item ? <Themer>item.instance : item.origin;
   const [ state, setState ] = useState(cloneDeep(manager.theme));
 
   manager.theme = state;
@@ -43,12 +43,12 @@ export function useThemeManager(key: symbol): ThemeManager {
   return manager;
 }
 
-export function createThemeManager(options: ThemeManagerOptions) {
+export function createThemer(options: ThemerOptions) {
   const { key, storeItem } = createThemeMangerStore(options);
 
   return {
     key,
     origin: storeItem.origin,
-    useThemeManager: () => useThemeManager(key),
+    useThemer: () => useThemer(key),
   };
 }

@@ -1,8 +1,8 @@
-import { createThemeManager } from '@lyngs/themer-vue';
+import { createThemer } from '@lyngs/themer-vue';
 import light from './light';
 import dark from './dark';
 
-const { manager, install } = createThemeManager([
+const { manager, install } = createThemer([
   light,
   dark,
 ]);
