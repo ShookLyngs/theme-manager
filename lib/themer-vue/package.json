@@ -1,6 +1,6 @@
 {
   "name": "@lyngs/themer-vue",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "files": [
     "src",
     "dist",
@@ -30,7 +30,7 @@
     "release": "npm run build && npm publish"
   },
   "dependencies": {
-    "@lyngs/themer": "^0.4.1",
+    "@lyngs/themer": "*",
     "vue": "^3.0.5"
   }
 }

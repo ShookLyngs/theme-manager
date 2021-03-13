@@ -4,7 +4,7 @@
     "lib/*"
   ],
   "description": "Modern Web Theme Manager in JavaScript. Support TailwindCSS preset generation, also support Vue/Reaact.",
-  "version": "0.2.8",
+  "version": "0.4.3",
   "author": "shook-lyngs",
   "license": "MIT",
   "repository": {
